@@ -15,3 +15,10 @@ export async function getPosts() : Promise<Post[]> {
   const json = await response.json()
   return json.posts
 }
+
+export async function getUsername(id: number): Promise<string> {
+  const response = await fetch(`${API_BASE_URL}/users/${id}`)
+  if (!response.ok) throw new Error('Failed to fetch username.')
+  const json = await response.json()
+  return json.username
+}
