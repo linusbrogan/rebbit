@@ -2,13 +2,14 @@ import {
   getPosts,
   Post
 } from './api'
+import PostCard from './PostCard'
 
-export default async function Home() {
+export default async function Home() : Promise<JSX.Element>{
   const posts : Post[] = await getPosts()
 
   return (
     <div>
-      {posts.map(o => JSON.stringify(o))}
+      { posts.map(post => PostCard(post)) }
     </div>
   )
 }
