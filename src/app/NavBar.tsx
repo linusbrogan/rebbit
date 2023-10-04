@@ -54,9 +54,9 @@ export default function NavBar(props: NavBarProps) {
         <Input
           className="navbar-search-box"
           onChange={handleSearchInput}
-          placeholder="Search"
+          placeholder="Search Rebbit"
+          prefix={<SearchOutlined />}
           size="large"
-          suffix={<SearchOutlined />}
           style={{verticalAlign: 'super'}}
         />
       </Space>
