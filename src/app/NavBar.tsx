@@ -3,11 +3,14 @@ import { ChangeEvent } from 'react'
 import Image from 'next/image'
 import {
   Input,
+  Layout,
   Space,
+  theme,
   Typography
 } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 
+const { Header } = Layout
 const { Title } = Typography
 
 export type NavBarProps = {
@@ -16,31 +19,47 @@ export type NavBarProps = {
 }
 
 export default function NavBar(props: NavBarProps) {
+  const {token} = theme.useToken()
+  const backgroundColor = token.colorBgContainer
+  const outlineColor = token.colorFillSecondary
+
   function handleSearchInput(event: ChangeEvent<HTMLInputElement>): void {
     props.onQueryChange(event.currentTarget.value)
   }
 
   return (
-    <Space
+    <Header
       className="navbar"
-      direction="horizontal"
-      size="large"
+      style={{
+        backgroundColor,
+        borderBottom: `1px solid ${outlineColor}`
+      }}
     >
-      <Image
-        src="/logo.png"
-        alt="Rebbit Logo"
-        width={40}
-        height={40}
-        priority
-      />
-      <Title>Rebbit</Title>
-      <Input
-        className="navbar-search-box"
-        onChange={handleSearchInput}
-        placeholder="Search"
+      <Space
+        direction="horizontal"
         size="large"
-        suffix={<SearchOutlined />}
-      />
-    </Space>
+      >
+        <Image
+          style={{
+            // Header is 64px tall, and the logo is 40px, so vertically aligning it leaves 0.5*(64px-40px)=12px above.
+            marginTop: 0.5*(64-40)
+          }}
+          src="/logo.png"
+          alt="Rebbit Logo"
+          width={40}
+          height={40}
+          priority
+        />
+        <Title style={{display: 'inline'}}>Rebbit</Title>
+        <Input
+          className="navbar-search-box"
+          onChange={handleSearchInput}
+          placeholder="Search"
+          size="large"
+          suffix={<SearchOutlined />}
+          style={{verticalAlign: 'super'}}
+        />
+      </Space>
+    </Header>
   )
 }

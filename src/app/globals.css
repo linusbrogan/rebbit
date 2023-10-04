@@ -21,6 +21,10 @@ body {
   max-width: 1000px;
 }
 
-.navbar-content {
-  margin-left: 20px;
+.navbar {
+  padding-left: 20px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  margin-bottom: 20px;
 }

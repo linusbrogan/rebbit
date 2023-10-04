@@ -25,7 +25,13 @@ export default function PostCard(props: Post) : JSX.Element {
       <Card key={props.id}>
         <Text strong>r/{ subrebbit }</Text>
         <Text type="secondary"> • Posted by u/{ props.username }</Text>
-        <Title style={{marginTop: '0px',paddingTop:'0px'}} level={4} >{ props.title }</Title>
+        <Title
+          style={{
+            marginTop: '0px',
+            paddingTop: '0px'
+          }}
+          level={4}
+        >{ props.title }</Title>
         <Text type="secondary">Votes: { props.reactions }</Text>
         <Paragraph>{ body }</Paragraph>
       </Card>
