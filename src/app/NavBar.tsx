@@ -50,7 +50,7 @@ export default function NavBar(props: NavBarProps) {
           height={40}
           priority
         />
-        <Title style={{display: 'inline'}}>Rebbit</Title>
+        <Title className="navbar-title">Rebbit</Title>
         <Input
           className="navbar-search-box"
           onChange={handleSearchInput}

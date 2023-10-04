@@ -28,3 +28,13 @@ body {
   z-index: 1;
   margin-bottom: 20px;
 }
+
+.navbar-title {
+  display: inline;
+}
+
+@media (max-width: 480px) {
+  .navbar-title {
+    display: none;
+  }
+}
