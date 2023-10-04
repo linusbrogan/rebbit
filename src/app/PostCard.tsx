@@ -1,4 +1,14 @@
+import {
+  Card,
+  Typography
+} from 'antd'
 import { Post } from './api'
+
+const {
+  Paragraph,
+  Text,
+  Title
+} = Typography
 
 const MAX_POST_LENGTH = 300
 
@@ -12,11 +22,12 @@ export default function PostCard(props: Post) : JSX.Element {
   const subrebbit : string = props.tags[0]
 
   return (
-    <article key={props.id}>
-      <span>r/{ subrebbit } • Posted by u/{ props.username }</span>
-      <h3>{ props.title }</h3>
-      <span> Votes: { props.reactions } </span>
-      <p>{ body }</p>
-    </article>
+      <Card key={props.id}>
+        <Text strong>r/{ subrebbit }</Text>
+        <Text type="secondary"> • Posted by u/{ props.username }</Text>
+        <Title style={{marginTop: '0px',paddingTop:'0px'}} level={4} >{ props.title }</Title>
+        <Text type="secondary">Votes: { props.reactions }</Text>
+        <Paragraph>{ body }</Paragraph>
+      </Card>
   )
 }
