@@ -21,23 +21,23 @@ const {
 
 const MAX_POST_LENGTH = 300
 
-export default function PostCard(props: Post) : JSX.Element {
+export default function PostCard(props: {post: Post}) : JSX.Element {
   const isSmallScreen = useMediaQuery('(max-width: 480px)')
 
   const {token} = theme.useToken()
   const r = token.borderRadius
 
-  let body : string = props.body
+  let body : string = props.post.body
   if (body.length > MAX_POST_LENGTH) {
     body = body.substring(0, MAX_POST_LENGTH - 3) + '...'
   }
 
   // TODO: What if the array is empty?
   // None of the posts have no tags.
-  const subrebbit : string = props.tags[0]
+  const subrebbit : string = props.post.tags[0]
 
   return (
-    <Space.Compact key={props.id} className="post-card">
+    <Space.Compact className="post-card">
       <Card
         className="hide-small"
         size="small"
@@ -53,7 +53,7 @@ export default function PostCard(props: Post) : JSX.Element {
             shape="circle"
             style={{borderRadius:'50%'}}
           />
-          <Text strong >{ props.reactions }</Text>
+          <Text strong >{ props.post.reactions }</Text>
           <Button
             icon={<CaretDownOutlined />}
             shape="circle"
@@ -65,7 +65,7 @@ export default function PostCard(props: Post) : JSX.Element {
         isSmallScreen ? {} : {borderRadius: `0px ${r}px ${r}px 0px`}
       }>
         <Text strong>r/{ subrebbit }</Text>
-        <Text type="secondary"> • Posted by u/{ props.username }</Text>
+        <Text type="secondary"> • Posted by u/{ props.post.username }</Text>
         <Title
           style={{
             marginTop: '0px',
@@ -73,7 +73,7 @@ export default function PostCard(props: Post) : JSX.Element {
           }}
           level={4}
         >
-          { props.title }
+          { props.post.title }
         </Title>
         <Paragraph>{ body }</Paragraph>
       </Card>

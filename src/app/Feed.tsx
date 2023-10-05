@@ -43,7 +43,16 @@ export default function Feed(props: FeedProps) : JSX.Element {
             direction="vertical"
             size="middle"
           >
-            { props.posts.filter(matchesFilterQuery).map((post: Post) => PostCard(post)) }
+            {
+              props.posts
+                .filter(matchesFilterQuery)
+                .map(
+                  (post: Post) => <PostCard
+                    key={post.id}
+                    post={post}
+                  />
+                )
+            }
           </Space>
         </Content>
       </Layout>
