@@ -9,7 +9,7 @@ import {
   CaretDownOutlined,
   CaretUpOutlined
 } from '@ant-design/icons'
-import { useMediaQuery } from '@uidotdev/usehooks'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { Post } from './api'
 
