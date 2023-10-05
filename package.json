@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@uidotdev/usehooks": "^2.3.1",
     "antd": "^5.9.4",
     "next": "latest",
     "react": "latest",

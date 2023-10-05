@@ -37,4 +37,7 @@ body {
   .navbar-title {
     display: none;
   }
+  .hide-small {
+    display: none;
+  }
 }
