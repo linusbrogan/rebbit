@@ -5,6 +5,7 @@ import {
   render,
   screen
 } from '@testing-library/react'
+jest.mock('usehooks-ts')
 
 import apiResponse from '../../apiResponse.json'
 import Feed from './Feed'

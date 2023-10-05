@@ -4,6 +4,7 @@ import {
   render,
   screen
 } from '@testing-library/react'
+jest.mock('usehooks-ts')
 
 import Home from './page'
 
