@@ -60,7 +60,10 @@ export default function Feed(props: FeedProps) : JSX.Element {
           <Space
             direction="vertical"
             size="middle"
-            style={{maxWidth: 1000}}
+            style={{
+              flexGrow: 1,
+              maxWidth: 1000
+            }}
           >
             {
               posts

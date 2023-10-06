@@ -39,7 +39,12 @@ export default function PostCard(props: {post: Post}) : JSX.Element {
   const subrebbit : string = props.post.tags[0]
 
   return (
-    <Space.Compact className="post-card">
+    <Space.Compact
+      style={{
+        display: 'flex',
+        flexDirection: 'row'
+      }}
+    >
       <Card
         className="hide-small"
         size="small"
@@ -65,9 +70,10 @@ export default function PostCard(props: {post: Post}) : JSX.Element {
       </Card>
       <Card
         onClick={() => setIsTruncated(!isTruncated)}
-        style={
-          isSmallScreen ? {} : {borderRadius: `0px ${r}px ${r}px 0px`}
-        }
+        style={{
+          flexGrow: 1,
+          ...(isSmallScreen ? {} : {borderRadius: `0px ${r}px ${r}px 0px`})
+        }}
       >
         <Text strong>r/{ subrebbit }</Text>
         <Text type="secondary"> • Posted by u/{ props.post.username }</Text>
