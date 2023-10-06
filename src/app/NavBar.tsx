@@ -55,8 +55,7 @@ export default function NavBar(props: NavBarProps) {
           priority
         />
         <Title
-          className="hide-small"
-          style={{display: 'inline'}}
+          className="hide-small inline"
         >
           Rebbit
         </Title>
