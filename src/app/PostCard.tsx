@@ -39,10 +39,7 @@ export default function PostCard(props: {post: Post}) : JSX.Element {
   const subrebbit : string = props.post.tags[0]
 
   return (
-    <Space.Compact
-      className="post-card"
-      onClick={() => setIsTruncated(!isTruncated)}
-    >
+    <Space.Compact className="post-card">
       <Card
         className="hide-small"
         size="small"
@@ -66,9 +63,12 @@ export default function PostCard(props: {post: Post}) : JSX.Element {
             />
         </Space>
       </Card>
-      <Card style={
-        isSmallScreen ? {} : {borderRadius: `0px ${r}px ${r}px 0px`}
-      }>
+      <Card
+        onClick={() => setIsTruncated(!isTruncated)}
+        style={
+          isSmallScreen ? {} : {borderRadius: `0px ${r}px ${r}px 0px`}
+        }
+      >
         <Text strong>r/{ subrebbit }</Text>
         <Text type="secondary"> • Posted by u/{ props.post.username }</Text>
         <Title
