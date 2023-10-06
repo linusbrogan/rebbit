@@ -10,6 +10,7 @@ import {
   CaretUpOutlined
 } from '@ant-design/icons'
 import { useMediaQuery } from 'usehooks-ts'
+import { useState } from 'react';
 
 import { Post } from './api'
 
@@ -19,16 +20,17 @@ const {
   Title
 } = Typography
 
-const MAX_POST_LENGTH = 300
+const MAX_POST_LENGTH = 250
 
 export default function PostCard(props: {post: Post}) : JSX.Element {
   const isSmallScreen = useMediaQuery('(max-width: 480px)')
+  const [isTruncated, setIsTruncated] = useState<boolean>(true);
 
   const {token} = theme.useToken()
-  const r = token.borderRadius
+  const r: number = token.borderRadius
 
   let body : string = props.post.body
-  if (body.length > MAX_POST_LENGTH) {
+  if (isTruncated && body.length > MAX_POST_LENGTH) {
     body = body.substring(0, MAX_POST_LENGTH - 3) + '...'
   }
 
@@ -37,7 +39,10 @@ export default function PostCard(props: {post: Post}) : JSX.Element {
   const subrebbit : string = props.post.tags[0]
 
   return (
-    <Space.Compact className="post-card">
+    <Space.Compact
+      className="post-card"
+      onClick={() => setIsTruncated(!isTruncated)}
+    >
       <Card
         className="hide-small"
         size="small"
