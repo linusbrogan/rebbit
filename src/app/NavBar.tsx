@@ -29,10 +29,14 @@ export default function NavBar(props: NavBarProps) {
 
   return (
     <Header
-      className="navbar"
       style={{
         backgroundColor,
-        borderBottom: `1px solid ${outlineColor}`
+        borderBottom: `1px solid ${outlineColor}`,
+        marginBottom: 20,
+        paddingLeft: 20,
+        position: 'sticky',
+        top: 0,
+        zIndex: 1
       }}
     >
       <Space
@@ -50,14 +54,22 @@ export default function NavBar(props: NavBarProps) {
           height={40}
           priority
         />
-        <Title className="navbar-title">Rebbit</Title>
+        <Title
+          className="hide-small"
+          style={{display: 'inline'}}
+        >
+          Rebbit
+        </Title>
         <Input
-          className="navbar-search-box"
           onChange={handleSearchInput}
           placeholder="Search Rebbit"
           prefix={<SearchOutlined />}
           size="large"
-          style={{verticalAlign: 'super'}}
+          style={{
+            borderRadius: 20,
+            maxWidth: 200,
+            verticalAlign: 'super'
+          }}
         />
       </Space>
     </Header>

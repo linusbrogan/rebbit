@@ -39,9 +39,9 @@ export default function Feed(props: FeedProps) : JSX.Element {
         <NavBar query={filterQuery} onQueryChange={setFilterQuery}/>
         <Content className="flex-center">
           <Space
-            className="feed"
             direction="vertical"
             size="middle"
+            style={{maxWidth: 1000}}
           >
             {
               props.posts

@@ -1,11 +1,7 @@
+/* Match body's background to its contents when they don't fill the screen. */
 body {
   margin: 0px;
   background-color: black;
-}
-
-.navbar-search-box {
-  max-width: 200px;
-  border-radius: 20px;
 }
 
 .flex-center {
@@ -17,26 +13,7 @@ body {
   gap: 1ch;
 }
 
-.feed {
-  max-width: 1000px;
-}
-
-.navbar {
-  padding-left: 20px;
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-  margin-bottom: 20px;
-}
-
-.navbar-title {
-  display: inline;
-}
-
 @media (max-width: 480px) {
-  .navbar-title {
-    display: none;
-  }
   .hide-small {
     display: none;
   }
