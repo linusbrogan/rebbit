@@ -16,9 +16,9 @@ Initialize a Next.js project with default options:
 npx create-next-app@latest
 ```
 
-For styling, add Ant.
+For styling, add Ant and configure for App Router as [instructed](https://ant.design/docs/react/use-with-next/).
 ```bash
-npm install --save antd @ant-design/icons
+npm install --save antd @ant-design/cssinjs @ant-design/icons
 ```
 
 Add the useMediaQuery hook to adjust to different screen sizes.
