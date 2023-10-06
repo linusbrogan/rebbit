@@ -26,6 +26,11 @@ Add the useMediaQuery hook to adjust to different screen sizes.
 npm install --save usehooks-ts
 ```
 
+Add infinite scroll.
+```bash
+npm install --save react-infinite-scroll-component
+```
+
 Add testing dependencies and configure Jest according to [the docs](https://nextjs.org/docs/pages/building-your-application/optimizing/testing#jest-and-react-testing-library).
 ```bash
 npm install --save-dev jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom whatwg-fetch

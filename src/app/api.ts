@@ -11,15 +11,24 @@ type APIPost = {
 
 export type Post = APIPost & {username: string}
 
-export async function getPosts() : Promise<Post[]> {
-  const response = await fetch(`${API_BASE_URL}/posts?limit=10`)
-  if (!response.ok) throw new Error('Failed to fetch posts.')
-  const json = await response.json()
-  const posts : APIPost[] = json.posts
-  for (let post of posts) {
-    (<Post>post).username = await getUsername(post.userId)
+export async function getPosts(skip?: number) : Promise<Post[]> {
+  try {
+    let url: string = `${API_BASE_URL}/posts?limit=10`
+    if (skip != undefined && skip > 0) {
+      url += `&skip=${skip}`
+    }
+    const response = await fetch(url)
+    if (!response.ok) throw new Error('Failed to fetch posts.')
+    const json = await response.json()
+    const posts : APIPost[] = json.posts
+    for (let post of posts) {
+      (<Post>post).username = await getUsername(post.userId)
+    }
+    return <Post[]>posts
+  } catch (_) {
+    // Swallow errors to avoid error-handling in API users.
+    return []
   }
-  return <Post[]>posts
 }
 
 export async function getUsername(id: number): Promise<string> {

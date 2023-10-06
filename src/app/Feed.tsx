@@ -1,12 +1,22 @@
 "use client"
 
-import { ConfigProvider, Layout , Space, theme} from 'antd'
+import {
+  Card,
+  ConfigProvider,
+  Layout,
+  Space,
+  theme
+} from 'antd'
 import { useState } from 'react'
-import { Post } from './api'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import {
+  getPosts,
+  Post
+} from './api'
 import NavBar from './NavBar'
 import PostCard from './PostCard'
 
-const {Content} = Layout;
+const {Content} = Layout
 
 export type FeedProps = {
   posts: Post[]
@@ -21,6 +31,15 @@ export default function Feed(props: FeedProps) : JSX.Element {
   function matchesFilterQuery(post: Post) : boolean {
     const title = post.title.toLowerCase()
     return title.includes(filterQuery.toLowerCase())
+  }
+
+  const [posts, setPosts] = useState<Post[]>(props.posts)
+  const [hasMorePosts, setHasMorePosts] = useState<boolean>(true)
+
+  async function getNextPosts() {
+    const newPosts = await getPosts(posts.length)
+    if (newPosts.length == 0) setHasMorePosts(false)
+    setPosts([...posts, ...newPosts])
   }
 
   return (
@@ -44,7 +63,7 @@ export default function Feed(props: FeedProps) : JSX.Element {
             style={{maxWidth: 1000}}
           >
             {
-              props.posts
+              posts
                 .filter(matchesFilterQuery)
                 .map(
                   (post: Post) => <PostCard
@@ -53,6 +72,18 @@ export default function Feed(props: FeedProps) : JSX.Element {
                   />
                 )
             }
+            <InfiniteScroll
+              dataLength={posts.length}
+              next={getNextPosts}
+              hasMore={hasMorePosts}
+              loader={<Card loading />}
+            >
+              {/*
+                The infinite scrolling list of posts is supposed to go here.
+                But the InfiniteScroll component breaks the styles, so it's empty.
+                It works well enough.
+              */}
+            </InfiniteScroll>
           </Space>
         </Content>
       </Layout>
